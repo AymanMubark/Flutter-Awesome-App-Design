@@ -2,7 +2,17 @@
 
 A new Flutter project.
 
+# Login Screen
 
+![](screenshots/1.jpeg)
+
+# Home Screen
+
+![](screenshots/2.jpeg)
+
+# List Screen
+
+![](screenshots/3.jpeg)
 
 ## Getting Started
 
