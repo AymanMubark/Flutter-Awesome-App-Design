@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_epay/Themes/constants.dart';
+import 'package:smart_epay/screens/home/components/deposit.dart';
+import 'package:smart_epay/screens/home/components/transfare.dart';
 
 class Body extends StatefulWidget {
   Body({Key key}) : super(key: key);
@@ -32,7 +34,9 @@ class _BodyState extends State<Body> {
                       foregroundColor: Colors.black,
                     ),
                   ),
-                  SizedBox(height: 4,),
+                  SizedBox(
+                    height: 4,
+                  ),
                   Flexible(
                     child: Text(
                       'Ayman Mubarak Ahmed',
@@ -53,16 +57,17 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 4,),
+                  SizedBox(
+                    height: 4,
+                  ),
                   Flexible(
                     child: Text(
                       '25000 AED',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold
-                      ),
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -81,16 +86,27 @@ class _BodyState extends State<Body> {
                         buildMainCard(FontAwesomeIcons.piggyBank, () {
                           Navigator.pushNamed(context, '/cahires');
                         }, 'Collect Mony'),
-                        buildMainCard(
-                            FontAwesomeIcons.exchangeAlt, () {}, 'Transfer Mony'),
+                        buildMainCard(FontAwesomeIcons.exchangeAlt, () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return TransferModal();
+                            },
+                          );
+                        }, 'Transfer Mony'),
                       ],
                     ),
                   ),
                   Flexible(
                     child: Row(
                       children: <Widget>[
-                        buildMainCard(FontAwesomeIcons.fileInvoiceDollar, () {},
-                            'Deposit'),
+                        buildMainCard(FontAwesomeIcons.fileInvoiceDollar, () {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return DepositModal();
+                              });
+                        }, 'Deposit'),
                         buildMainCard(FontAwesomeIcons.signOutAlt, () {
                           Navigator.pushReplacementNamed(context, '/');
                         }, 'Logout'),
@@ -125,10 +141,7 @@ class _BodyState extends State<Body> {
               Text(
                 '$title',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: appcolor
-                ),
+                style: TextStyle(fontSize: 16, color: appcolor),
               ),
             ],
           ),

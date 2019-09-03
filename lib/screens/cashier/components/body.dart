@@ -118,12 +118,12 @@ class _BodyState extends State<Body> {
                       Flexible(
                         child: Text(
                           "Current Balance",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                       ),
                       Flexible(
                         child: Text(
-                          "28000 AED",
+                          "2800000 AED",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -260,4 +260,6 @@ class _BodyState extends State<Body> {
       ),
     );
   }
+
+
 }
