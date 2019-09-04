@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:smart_epay/Themes/constants.dart';
 
-class TransferModal extends StatefulWidget {
-  TransferModal({Key key}) : super(key: key);
+class CollectModal extends StatefulWidget {
+  CollectModal({Key key}) : super(key: key);
 
-  TransferModalState createState() => TransferModalState();
+  CollectModalState createState() => CollectModalState();
 }
 
-class TransferModalState extends State<TransferModal> {
+class CollectModalState extends State<CollectModal> {
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -58,22 +58,57 @@ class TransferModalState extends State<TransferModal> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    DropdownButtonFormField(
-                      value: selected,
-                      decoration: InputDecoration(
-                          hintText: 'Cashier Name',
-                          hintStyle: TextStyle(color: appcolor)),
-                      items: ["A", "B", "C"]
-                          .map((label) => DropdownMenuItem(
-                                child: Text(label),
-                                value: label,
-                              ))
-                          .toList(),
-                      onChanged: (value) {
-                        setState(() => selected = value);
-                      },
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                         Column(
+                              children: <Widget>[
+                                Text(
+                                  'Cashier',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: secondcolor),
+                                ),
+                                SizedBox(height: 5,),
+                                Text(
+                                  'Ayman Mubarak Ahmed',
+                                  textAlign: TextAlign.center,
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                             VerticalDivider(
+                                  color: bordercolor,
+                                ),
+                             Column(
+                              children: <Widget>[
+                                Text(
+                                  'Merchent',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: secondcolor),
+                                ),
+                                SizedBox(height: 5,),
+                                Text(
+                                  'Tom & Jery',
+                                  textAlign: TextAlign.center,
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                      ],
                     ),
                     SizedBox(
+                      height: 10,
+                    ),
+                    Divider(
+                      color: bordercolor,
+                      height: 10,
+                    ),
+                     SizedBox(
                       height: 15,
                     ),
                     TextField(
@@ -81,16 +116,16 @@ class TransferModalState extends State<TransferModal> {
                       onChanged: (String value) {},
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                          hintText: 'Amount To Transfare',
+                          hintText: 'Amount To Collect',
                           hintStyle: TextStyle(color: appcolor)),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-                    buildBigRaisedButton(context, 'Transfare Now', () {
-                      Navigator.pop(context);
+                    buildBigRaisedButton(context, 'Collect Now', () {
+                                            Navigator.pop(context);
                     }),
-                    SizedBox(
+                     SizedBox(
                       height: 15,
                     ),
                   ],

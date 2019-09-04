@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_epay/Themes/constants.dart';
 import 'package:smart_epay/screens/home/components/deposit.dart';
 import 'package:smart_epay/screens/home/components/transfare.dart';
@@ -13,127 +12,125 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: Card(
-              margin: EdgeInsets.all(0),
-              color: appcolor,
-              child: Center(
-                  child: Column(
+          Container(
+          decoration: BoxDecoration(
+            color: appcolor,
+            image:DecorationImage(image:  AssetImage('assets/images/home.png'),fit: BoxFit.fill ),
+          ),
+            margin: EdgeInsets.all(0),
+            child: Center(
+                child: Padding(
+              padding: const EdgeInsets.all(45.0),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Flexible(
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/avatar.jpg'),
-                      radius: 30,
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.black,
-                    ),
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/avatar.png'),
+                    radius: 50,
+                   backgroundColor: appcolor,
                   ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Flexible(
-                    child: Text(
-                      'Ayman Mubarak Ahmed',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Flexible(
-                    child: Text(
-                      'YOUR BALANCE',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
+                  Text(
+                    'Ayman Mubarak Ahmed',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
                         color: Colors.white,
-                        fontSize: 18,
-                      ),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'YOUR BALANC',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
                     ),
                   ),
                   SizedBox(
-                    height: 4,
+                    height: 8,
                   ),
-                  Flexible(
-                    child: Text(
-                      '25000 AED',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              )),
-            ),
-          ),
-          Flexible(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  Flexible(
-                    child: Row(
-                      children: <Widget>[
-                        buildMainCard(FontAwesomeIcons.piggyBank, () {
-                          Navigator.pushNamed(context, '/cahires');
-                        }, 'Collect Mony'),
-                        buildMainCard(FontAwesomeIcons.exchangeAlt, () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return TransferModal();
-                            },
-                          );
-                        }, 'Transfer Mony'),
-                      ],
-                    ),
-                  ),
-                  Flexible(
-                    child: Row(
-                      children: <Widget>[
-                        buildMainCard(FontAwesomeIcons.fileInvoiceDollar, () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return DepositModal();
-                              });
-                        }, 'Deposit'),
-                        buildMainCard(FontAwesomeIcons.signOutAlt, () {
-                          Navigator.pushReplacementNamed(context, '/');
-                        }, 'Logout'),
-                      ],
-                    ),
+                  Text(
+                    '25000 AED',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
+            )),
+          ),
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Column(
+           children: <Widget>[
+                IntrinsicHeight(
+              child:
+                  Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Expanded(
+                  child: buildMainCard('collect.png', () {
+                    Navigator.pushNamed(context, '/cahires');
+                  }, 'Collect Mony'),
+                ),
+                Expanded(
+                  child: buildMainCard('transfier.png', () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return TransferModal();
+                      },
+                    );
+                  }, 'Transfier Mony'),
+                ),
+              ]),
             ),
-          )
+            IntrinsicHeight(
+              child:
+                  Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Expanded(
+                  child: buildMainCard('deposit.png', () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DepositModal();
+                      },
+                    );
+                  }, 'Deposit Mony'),
+                ),
+                Expanded(
+                  child: buildMainCard('logout.png', () {
+                    Navigator.pushReplacementNamed(context, '/');
+                  }, 'Logout'),
+                ),
+              ]),
+            )
+           ],
+         ),
+       )
         ],
       ),
     );
   }
 
-  Flexible buildMainCard(IconData fontIcon, Function onTap, String title) {
-    return Flexible(
-      child: InkWell(
-        onTap: onTap,
-        child: Card(
+  InkWell buildMainCard(String image, Function function, String title) {
+    return InkWell(
+      onTap: () => function(),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(
-                fontIcon,
-                size: 70,
+              Image(
+                fit: BoxFit.contain,
+                image: AssetImage('assets/images/$image'),
               ),
               SizedBox(
                 height: 10,

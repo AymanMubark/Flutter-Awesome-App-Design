@@ -5,7 +5,7 @@ class Cashier{
   final String merchent;
   final double balance;
 
-  Cashier(this.id, this.name, this.merchent, this.balance);
+  Cashier({this.id, this.name, this.merchent, this.balance});
 
 
   
