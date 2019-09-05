@@ -20,7 +20,8 @@ class _BodyState extends State<Body> {
             padding: const EdgeInsets.symmetric(horizontal: double.infinity,vertical: 200),
             margin: EdgeInsets.all(0),
             decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/images/login.png',),fit: BoxFit.cover)
+              color: appcolor,
+              image: DecorationImage(image: AssetImage('assets/images/login.png',),fit: BoxFit.contain)
                           ),
           ),
           Padding(

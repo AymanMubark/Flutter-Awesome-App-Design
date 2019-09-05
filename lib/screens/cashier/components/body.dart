@@ -69,8 +69,7 @@ class _BodyState extends State<Body> {
               : new ListView.builder(
             itemCount: cashiers.length,
             itemBuilder: (context, i) {
-              return new Card(
-                child: buildCashierCard(cashiers[i]),);
+              return buildCashierCard(cashiers[i]);
             },
           ),
         )
@@ -79,56 +78,58 @@ class _BodyState extends State<Body> {
   }
 
   Widget buildCashierCard(Cashier cashier) {
-    return InkWell(
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return CollectModal();
-          },
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/avatar.png'),
-                  backgroundColor: Colors.transparent,
-                  radius: 30,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        cashier.name,
-                        style: TextStyle(fontSize: 14, color: Colors.black),
-                      ),
-                      Text(
-                        cashier.merchent,
-                        style: TextStyle(fontSize: 14, color: secondcolor),
-                      ),
-                    ],
+    return Card(
+      child: InkWell(
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return CollectModal();
+            },
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/avatar.png'),
+                    backgroundColor: Colors.transparent,
+                    radius: 30,
                   ),
-                ),
-              ],
-            ),
-            Text(
-              cashier.balance.toString() + ' AED',
-              style: TextStyle(
-                fontSize: 14,
-                color: appcolor,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          cashier.name,
+                          style: TextStyle(fontSize: 14, color: Colors.black),
+                        ),
+                        Text(
+                          cashier.merchent,
+                          style: TextStyle(fontSize: 14, color: secondcolor),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              Text(
+                cashier.balance.toString() + ' AED',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: appcolor,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

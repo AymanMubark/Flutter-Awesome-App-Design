@@ -15,7 +15,7 @@ class CollectModalState extends State<CollectModal> {
       child: Container(
         child: Card(
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
           margin: EdgeInsets.symmetric(vertical: 120, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
